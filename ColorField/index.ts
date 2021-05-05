@@ -32,7 +32,7 @@ export class ColorField implements ComponentFramework.StandardControl<IInputs, I
 		this.context = context;
 		this.container = container;
 		this.notifyOutputChanged = notifyOutputChanged;
-		// this.render();
+		this.render();
 	}
 
 	onTextBlur = (newValue: Number | string): void => {
@@ -53,20 +53,19 @@ export class ColorField implements ComponentFramework.StandardControl<IInputs, I
 	 */
 	public updateView(context: ComponentFramework.Context<IInputs>): void {
 		this.context = context;
-		// ReactDOM.unmountComponentAtNode(this.container);
-		// this.render();
+		this.render();
 	}
 
 	public render(): void {
 		const value = this.context.parameters.value.raw;
 		let style = this.CheckMaxMinValues();
-		// ReactDOM.render(
-		// 	React.createElement(NumberInput, {
-		// 		value: value || '',
-		// 		fontColor: style[0],
-		// 		backgroundColor: style[1],
-		// 		onChange: this.onTextBlur,
-		// 	}), this.container);
+		ReactDOM.render(
+			React.createElement(NumberInput, {
+				value: value || '',
+				fontColor: style[0],
+				backgroundColor: style[1],
+				onChange: this.onTextBlur,
+			}), this.container);
 	}
 
 	public CheckMaxMinValues(): string[] {
